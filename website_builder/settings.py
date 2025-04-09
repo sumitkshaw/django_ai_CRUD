@@ -9,6 +9,13 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 
 from pathlib import Path
 
@@ -37,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+}
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -110,6 +125,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+SECRET_KEY = '0a856e2a63612e71c634bcbff5c5838ad8a4a69680a2451cbf5606fbd67db115a3e0c8a63a6a7615809ea7980dbbaaed470ddcbd63f3f40e3bce640c6aa75239'  # replace with strong key
 
 
 # Static files (CSS, JavaScript, Images)
